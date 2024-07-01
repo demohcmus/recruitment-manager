@@ -1,0 +1,217 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\dto\\applicantregistrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\dto\\applicantregistrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\registrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\models\\applicant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\models\\applicant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\models\\employer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\models\\employer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\dto\\employerregistrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\dto\\employerregistrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|c:\\users\\admin\\source\\repos\\recruitmentmanagement\\recruitmentmanagement\\migrations\\20240629160631_initial migration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3334BAC6-717F-4B2A-8ECB-737FA731AB86}|RecruitmentManagement\\RecruitmentManagement.csproj|solutionrelative:recruitmentmanagement\\migrations\\20240629160631_initial migration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Models\\User.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Models\\User.cs",
+              "RelativeToolTip": "RecruitmentManagement\\Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T14:21:59.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "RecruitmentManagement\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T11:00:26.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RegistrationController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\RegistrationController.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\RegistrationController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\RegistrationController.cs",
+              "RelativeToolTip": "RecruitmentManagement\\RegistrationController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T16:07:48.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "20240629160631_Initial Migration.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Migrations\\20240629160631_Initial Migration.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\Migrations\\20240629160631_Initial Migration.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Migrations\\20240629160631_Initial Migration.cs",
+              "RelativeToolTip": "RecruitmentManagement\\Migrations\\20240629160631_Initial Migration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T16:06:31.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicantRegistrationDto.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\DTO\\ApplicantRegistrationDto.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\DTO\\ApplicantRegistrationDto.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\DTO\\ApplicantRegistrationDto.cs",
+              "RelativeToolTip": "RecruitmentManagement\\DTO\\ApplicantRegistrationDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T16:05:35.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "EmployerRegistrationDto.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\DTO\\EmployerRegistrationDto.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\DTO\\EmployerRegistrationDto.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\DTO\\EmployerRegistrationDto.cs",
+              "RelativeToolTip": "RecruitmentManagement\\DTO\\EmployerRegistrationDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T16:04:42.517Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\appsettings.json",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\appsettings.json",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\appsettings.json",
+              "RelativeToolTip": "RecruitmentManagement\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-29T14:51:13.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Program.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\Program.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Program.cs",
+              "RelativeToolTip": "RecruitmentManagement\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T14:51:08.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Applicant.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Models\\Applicant.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\Models\\Applicant.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Models\\Applicant.cs",
+              "RelativeToolTip": "RecruitmentManagement\\Models\\Applicant.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T14:49:54.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Employer.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Models\\Employer.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\Models\\Employer.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Models\\Employer.cs",
+              "RelativeToolTip": "RecruitmentManagement\\Models\\Employer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T14:49:37.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "RecruitmentManagement\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "RecruitmentManagement\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T14:47:17.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
