@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 import { useAuth } from '../components/AuthContext';
 import '../Css/LoginPage.css';
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://localhost:5001/api/auth/login', {
+      const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -30,6 +31,7 @@ const LoginPage = () => {
       }
     } catch (error) {
       console.error('Login error', error);
+      alert('Login error. Please try again.');
     }
   };
 
@@ -42,8 +44,9 @@ const LoginPage = () => {
           <button className="social-btn facebook">Sign With Facebook</button>
           <button className="social-btn twitter">Sign With Twitter</button>
           <button className="social-btn google">Sign With Google</button>
-          <button className="social-btn employer" onClick={() => navigate('/register/employer')}>Sign as Employer</button>
+          <button className="social-btn business" onClick={() => navigate('/register/business')}>Sign as Business</button>
           <button className="social-btn applicant" onClick={() => navigate('/register/applicant')}>Sign as Applicant</button>
+          <button className="social-btn business" onClick={() => navigate('/register/employee')}>Sign as Employee</button>
         </div>
         <div className="login-form">
           <h2>Login to your account</h2>

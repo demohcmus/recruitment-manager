@@ -1,1 +1,71 @@
+# Node modules for frontend
 recruitment-management-frontend/node_modules/
+
+# Visual Studio directories
+.vs/
+.vscode/
+
+# Visual Studio user-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.history
+.vscode/
+
+# JetBrains Rider
+.idea
+.Rider
+
+# Visual Studio for Mac
+.vscode
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Files built by Visual Studio
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+*.user
+*.unsuccessfulbuild
+*.cache
+*.msi
+*.dotCover
+*.err
+*.msp
+*.msg
+*.tlog
+*.dmp

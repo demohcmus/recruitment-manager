@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import '../Css/FormStyles.css';
 
-const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239'; // Đảm bảo URL không bị null
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239';
 
-const ApplicantRegistrationForm = () => {
+const EmployeeRegistrationForm = () => {
   const [formData, setFormData] = useState({
     fullName: '',
     identityNumber: '',
     birthDate: '',
-    gender: '',
     email: '',
     phoneNumber: '',
-    address: '',
-    skills: '',
-    educationLevel: 'THPT'
+    position: '',
+    address: ''
   });
 
   const [message, setMessage] = useState('');
@@ -29,7 +27,7 @@ const ApplicantRegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiUrl}/api/registration/applicant`, {
+      const response = await fetch(`${apiUrl}/api/registration/employee`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,29 +36,27 @@ const ApplicantRegistrationForm = () => {
       });
   
       if (response.ok) {
-        // Try to parse JSON, fallback to text if parsing fails
         const contentType = response.headers.get('content-type');
         if (contentType && contentType.indexOf('application/json') !== -1) {
           const data = await response.json();
-          setMessage(data.message || 'Applicant registered successfully');
+          setMessage(data.message || 'Employee registered successfully');
         } else {
           const textData = await response.text();
-          setMessage(textData || 'Applicant registered successfully');
+          setMessage(textData || 'Employee registered successfully');
         }
       } else {
         const errorData = await response.json();
-        setMessage(`Failed to register applicant: ${errorData.message || response.statusText}`);
+        setMessage(`Failed to register employee: ${errorData.message || response.statusText}`);
       }
     } catch (error) {
       console.error('Error:', error);
-      setMessage('An error occurred while registering applicant');
+      setMessage('An error occurred while registering employee');
     }
   };
-  
 
   return (
     <div className="form-container">
-      <h2>Register as Applicant</h2>
+      <h2>Register as Employee</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="fullName">Full Name</label>
@@ -98,21 +94,6 @@ const ApplicantRegistrationForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="gender">Gender</label>
-          <select
-            name="gender"
-            id="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -137,6 +118,18 @@ const ApplicantRegistrationForm = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="position">Position</label>
+          <input
+            type="text"
+            name="position"
+            id="position"
+            placeholder="Position"
+            value={formData.position}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="address">Address</label>
           <input
             type="text"
@@ -148,37 +141,11 @@ const ApplicantRegistrationForm = () => {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="skills">Skills</label>
-          <input
-            type="text"
-            name="skills"
-            id="skills"
-            placeholder="Skills"
-            value={formData.skills}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="educationLevel">Education Level</label>
-          <select
-            name="educationLevel"
-            id="educationLevel"
-            value={formData.educationLevel}
-            onChange={handleChange}
-            required
-          >
-            <option value="THPT">THPT</option>
-            <option value="Dai Hoc">Đại Học</option>
-            <option value="Cao Hoc">Cao Học</option>
-          </select>
-        </div>
-        <button type="submit" className="form-btn">Register Applicant</button>
+        <button type="submit" className="form-btn">Register Employee</button>
       </form>
       {message && <p>{message}</p>}
     </div>
   );
 };
 
-export default ApplicantRegistrationForm;
+export default EmployeeRegistrationForm;

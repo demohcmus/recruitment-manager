@@ -5,9 +5,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace RecruitmentmMnagement.Controllers
+namespace RecruitmentManagement.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
@@ -34,10 +33,10 @@ namespace RecruitmentmMnagement.Controllers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                new Claim(ClaimTypes.Name, user.Id.ToString()),
-                new Claim(ClaimTypes.Role, user.Role)
+                    new Claim(ClaimTypes.Name, user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role)
                 }),
-                Expires = DateTime.UtcNow.AddHours(1),
+                Expires = DateTime.UtcNow.AddMinutes(int.Parse(_configuration["Jwt:DurationInMinutes"])),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -46,10 +45,10 @@ namespace RecruitmentmMnagement.Controllers
             return Ok(new { Token = tokenString });
         }
     }
+}
 
-    public class LoginDto
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+public class LoginDto
+{
+    public string Email { get; set; }
+    public string Password { get; set; }
 }

@@ -4248,11 +4248,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\RecruitmentManagement.csproj",
+      "projectUniqueName": "D:\\PTTK_HTTT\\RecruitmentManager\\RecruitmentManagement\\RecruitmentManagement\\RecruitmentManagement.csproj",
       "projectName": "RecruitmentManagement",
-      "projectPath": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\RecruitmentManagement.csproj",
+      "projectPath": "D:\\PTTK_HTTT\\RecruitmentManager\\RecruitmentManagement\\RecruitmentManagement\\RecruitmentManagement.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\source\\repos\\RecruitmentManagement\\RecruitmentManagement\\obj\\",
+      "outputPath": "D:\\PTTK_HTTT\\RecruitmentManager\\RecruitmentManagement\\RecruitmentManagement\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
