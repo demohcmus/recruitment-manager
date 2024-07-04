@@ -1,6 +1,7 @@
 # Node modules for frontend
 recruitment-management-frontend/node_modules/
 
+RecruitmentManagement/.vs
 # Visual Studio directories
 .vs/
 .vscode/

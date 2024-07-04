@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../Css/FormStyles.css';
 
-const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239'; // Đảm bảo URL không bị null
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239';
 
 const BusinessRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,7 @@ const BusinessRegistrationForm = () => {
   });
 
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,17 +34,9 @@ const BusinessRegistrationForm = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
-        // Try to parse JSON, fallback to text if parsing fails
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.indexOf('application/json') !== -1) {
-          const data = await response.json();
-          setMessage(data.message || 'Business registered successfully');
-        } else {
-          const textData = await response.text();
-          setMessage(textData || 'Business registered successfully');
-        }
+        navigate('/register-password', { state: { formData, role: 'Business' } });
       } else {
         const errorData = await response.json();
         setMessage(`Failed to register business: ${errorData.message || response.statusText}`);
@@ -52,8 +46,6 @@ const BusinessRegistrationForm = () => {
       setMessage('An error occurred while registering business');
     }
   };
-  
-  
 
   return (
     <div className="form-container">

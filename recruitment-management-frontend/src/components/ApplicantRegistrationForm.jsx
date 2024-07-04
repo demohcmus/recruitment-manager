@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../Css/FormStyles.css';
 
-const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239'; // Đảm bảo URL không bị null
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239';
 
 const ApplicantRegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const ApplicantRegistrationForm = () => {
   });
 
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,17 +38,9 @@ const ApplicantRegistrationForm = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
-        // Try to parse JSON, fallback to text if parsing fails
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.indexOf('application/json') !== -1) {
-          const data = await response.json();
-          setMessage(data.message || 'Applicant registered successfully');
-        } else {
-          const textData = await response.text();
-          setMessage(textData || 'Applicant registered successfully');
-        }
+        navigate('/register-password', { state: { formData, role: 'Applicant' } });
       } else {
         const errorData = await response.json();
         setMessage(`Failed to register applicant: ${errorData.message || response.statusText}`);
@@ -56,7 +50,6 @@ const ApplicantRegistrationForm = () => {
       setMessage('An error occurred while registering applicant');
     }
   };
-  
 
   return (
     <div className="form-container">
@@ -176,7 +169,6 @@ const ApplicantRegistrationForm = () => {
         </div>
         <button type="submit" className="form-btn">Register Applicant</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 };

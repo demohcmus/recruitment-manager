@@ -1,0 +1,65 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .sidebar {
+    background-color: #f8f9fa;
+    height: 100vh;
+    padding-top: 20px;
+  }
+  
+  .sidebar .nav-link {
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .sidebar .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .content h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .content h2 {
+    font-size: 1.5rem;
+    color: #6c757d;
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+  }
+  
+  .badge-success {
+    background-color: #28a745;
+  }
+  
+  .badge-danger {
+    background-color: #dc3545;
+  }
+  
+  .input-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .input-group .form-control {
+    max-width: 300px;
+  }
+  
+  .input-group .btn-primary {
+    margin-left: 10px;
+  }
+  

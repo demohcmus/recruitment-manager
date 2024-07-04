@@ -272,3 +272,4 @@ D:\PTTK_HTTT\RecruitmentManager\RecruitmentManagement\RecruitmentManagement\obj\
 D:\PTTK_HTTT\RecruitmentManager\RecruitmentManagement\RecruitmentManagement\obj\Debug\net8.0\RecruitmentManagement.pdb
 D:\PTTK_HTTT\RecruitmentManager\RecruitmentManagement\RecruitmentManagement\obj\Debug\net8.0\RecruitmentManagement.genruntimeconfig.cache
 D:\PTTK_HTTT\RecruitmentManager\RecruitmentManagement\RecruitmentManagement\obj\Debug\net8.0\ref\RecruitmentManagement.dll
+D:\PTTK_HTTT\RecruitmentManager\RecruitmentManagement\RecruitmentManagement\bin\Debug\net8.0\BCrypt.Net-Next.dll

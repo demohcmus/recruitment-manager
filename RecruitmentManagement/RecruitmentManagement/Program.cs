@@ -19,7 +19,8 @@ builder.Services.AddCors(options =>
         {
             builder.WithOrigins("http://localhost:3000") // Địa chỉ frontend của bạn
                    .AllowAnyHeader()
-                   .AllowAnyMethod();
+                   .AllowAnyMethod()
+                   .AllowCredentials();
         });
 });
 
@@ -49,6 +50,8 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 });
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 

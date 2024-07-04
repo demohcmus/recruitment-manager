@@ -4,7 +4,7 @@
     {
         public string? FullName { get; set; }
         public string? IdentityNumber { get; set; }
-        public DateTime? BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; } // Nullable DateTime
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Position { get; set; }

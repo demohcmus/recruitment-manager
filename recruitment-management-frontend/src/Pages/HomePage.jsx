@@ -1,15 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useAuth } from '../components/AuthContext';
 
-const HomePage = () => {
-    return (
-        <div>
-            <h1>Welcome to the Recruitment Management System</h1>
-            <Link to="/login"><button>Login</button></Link>
-            <Link to="/register/business"><button>Register as Business</button></Link>
-            <Link to="/register/applicant"><button>Register as Applicant</button></Link>
-        </div>
-    );
+const HomePage = ({ role }) => {
+  const auth = useAuth();
+  const userRole = auth.user?.role;
+
+  if (role && userRole !== role) {
+    return <div>Unauthorized</div>;
+  }
+
+  return (
+    <div>
+      <h1>Welcome to the Recruitment Management System</h1>
+      <h2>Your role: {userRole}</h2>
+      {userRole === 'business' && <div>Business Dashboard</div>}
+      {userRole === 'employee' && <div>Employee Dashboard</div>}
+      {userRole === 'applicant' && <div>Applicant Dashboard</div>}
+    </div>
+  );
 };
 
 export default HomePage;

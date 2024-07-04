@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 import { useAuth } from '../components/AuthContext';
 import '../Css/LoginPage.css';
-const apiUrl = process.env.REACT_APP_API_URL;
+
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -21,8 +22,9 @@ const LoginPage = () => {
         },
         body: JSON.stringify({ email, password })
       });
-      const data = await response.json();
+
       if (response.ok) {
+        const data = await response.json();
         auth.login(data.token);
         const decoded = jwtDecode(data.token);
         navigate(`/home/${decoded.role.toLowerCase()}`);

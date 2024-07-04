@@ -14,5 +14,6 @@ namespace RecruitmentManagement.Data
         public DbSet<Applicant> Applicants { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<RecruitmentInfo> RecruitmentInfos { get; set; }
     }
 }

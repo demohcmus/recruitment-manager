@@ -1,54 +1,41 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.EntityFrameworkCore;
 using RecruitmentManagement.Data;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-
+using RecruitmentManagement.Models;
+using RecruitmentManagement.DTO;
+using System.Threading.Tasks;
+using BCrypt.Net;
 namespace RecruitmentManagement.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AuthController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private readonly IConfiguration _configuration;
 
-        public AuthController(ApplicationDbContext context, IConfiguration configuration)
+        public UserController(ApplicationDbContext context)
         {
             _context = context;
-            _configuration = configuration;
         }
 
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginDto loginDto)
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterUserDto registerUserDto)
         {
-            var user = _context.Users.SingleOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
-            if (user == null)
-                return Unauthorized();
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            if (await _context.Users.AnyAsync(u => u.Email == registerUserDto.Email))
             {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role)
-                }),
-                Expires = DateTime.UtcNow.AddMinutes(int.Parse(_configuration["Jwt:DurationInMinutes"])),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
+                return BadRequest(new { message = "Email already exists" });
+            }
 
-            return Ok(new { Token = tokenString });
+            var user = new User
+            {
+                Email = registerUserDto.Email,
+                Password = BCrypt.Net.BCrypt.HashPassword(registerUserDto.Password),
+                Role = registerUserDto.Role
+            };
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            return Ok(new { message = "User registered successfully" });
         }
     }
-}
-
-public class LoginDto
-{
-    public string Email { get; set; }
-    public string Password { get; set; }
 }

@@ -5,6 +5,6 @@
         public int Id { get; set; }
         public string? Email { get; set; }
         public string? Password { get; set; }
-        public string? Role { get; set; } // e.g., "Employee", "Employer", "Applicant"
+        public string? Role { get; set; } // e.g., "Business", "Employer", "Applicant"
     }
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../Css/FormStyles.css';
 
 const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239';
@@ -15,6 +16,7 @@ const EmployeeRegistrationForm = () => {
   });
 
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,16 +36,9 @@ const EmployeeRegistrationForm = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       if (response.ok) {
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.indexOf('application/json') !== -1) {
-          const data = await response.json();
-          setMessage(data.message || 'Employee registered successfully');
-        } else {
-          const textData = await response.text();
-          setMessage(textData || 'Employee registered successfully');
-        }
+        navigate('/register-password', { state: { formData, role: 'Employee' } });
       } else {
         const errorData = await response.json();
         setMessage(`Failed to register employee: ${errorData.message || response.statusText}`);
@@ -143,7 +138,6 @@ const EmployeeRegistrationForm = () => {
         </div>
         <button type="submit" className="form-btn">Register Employee</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 };
