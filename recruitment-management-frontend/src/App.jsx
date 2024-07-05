@@ -8,7 +8,7 @@ import RegisterPassword from './components/RegisterPassword';
 import HomeBusiness from './Pages/HomeBusiness';
 import HomeEmployee from './Pages/HomeEmployee';
 import HomeApplicant from './Pages/HomeApplicant';
-import RecruitmentRegistrationPage from './Pages/RecruitmentRegistrationPage'; // Add this import
+import RecruitmentRegistrationPage from './Pages/RecruitmentRegistrationPage'; // Import thêm
 import { AuthProvider, useAuth } from './components/AuthContext';
 
 const PrivateRoute = ({ children }) => {
@@ -17,24 +17,24 @@ const PrivateRoute = ({ children }) => {
 };
 
 const App = () => {
-  return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/home/business" element={<PrivateRoute><HomeBusiness /></PrivateRoute>} />
-          <Route path="/home/employee" element={<PrivateRoute><HomeEmployee /></PrivateRoute>} />
-          <Route path="/home/applicant" element={<PrivateRoute><HomeApplicant /></PrivateRoute>} />
-          <Route path="/register/business" element={<BusinessRegistrationPage />} />
-          <Route path="/register/applicant" element={<ApplicantRegistrationPage />} />
-          <Route path="/register/employee" element={<EmployeeRegistrationPage />} />
-          <Route path="/register-password" element={<RegisterPassword />} />
-          <Route path="/register-recruitment" element={<PrivateRoute><RecruitmentRegistrationPage /></PrivateRoute>} /> {/* Add this route */}
-          <Route path="*" element={<Navigate to="/login" />} />
-        </Routes>
-      </Router>
-    </AuthProvider>
-  );
+    return (
+        <AuthProvider>
+            <Router>
+                <Routes>
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/home/business" element={<PrivateRoute><HomeBusiness /></PrivateRoute>} />
+                    <Route path="/home/employee" element={<PrivateRoute><HomeEmployee /></PrivateRoute>} />
+                    <Route path="/home/applicant" element={<PrivateRoute><HomeApplicant /></PrivateRoute>} />
+                    <Route path="/register/business" element={<BusinessRegistrationPage />} />
+                    <Route path="/register/applicant" element={<ApplicantRegistrationPage />} />
+                    <Route path="/register/employee" element={<EmployeeRegistrationPage />} />
+                    <Route path="/register-password" element={<RegisterPassword />} />
+                    <Route path="/register-recruitment" element={<PrivateRoute><RecruitmentRegistrationPage /></PrivateRoute>} /> {/* Thêm route */}
+                    <Route path="*" element={<Navigate to="/login" />} />
+                </Routes>
+            </Router>
+        </AuthProvider>
+    );
 };
 
 export default App;

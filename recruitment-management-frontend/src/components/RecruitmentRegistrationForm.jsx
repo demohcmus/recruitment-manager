@@ -44,9 +44,17 @@ const RecruitmentRegistrationForm = () => {
 
       if (response.ok) {
         setMessage('Recruitment information registered successfully');
-        navigate('/home/business');
+        setTimeout(() => {
+          navigate('/home/business');
+        }, 2000);
       } else {
-        const errorData = await response.json();
+        let errorData = null;
+        try {
+          errorData = await response.json();
+        } catch (jsonError) {
+          setMessage(`Failed to register recruitment: ${response.statusText}`);
+          return;
+        }
         setMessage(`Failed to register recruitment: ${errorData.message || response.statusText}`);
       }
     } catch (error) {
@@ -59,6 +67,7 @@ const RecruitmentRegistrationForm = () => {
     <div className="form-container">
       <h2>Register Recruitment Information</h2>
       <form onSubmit={handleSubmit}>
+        {/* Form Fields */}
         <div className="form-group">
           <label htmlFor="position">Position</label>
           <input

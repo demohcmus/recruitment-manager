@@ -37,7 +37,7 @@ const HomeBusiness = () => {
     <Container fluid>
       <Row>
         <Col xs={2} className="sidebar">
-          <div className="logo">Salessa</div>
+          <div className="logo">Ibex</div>
           <Nav defaultActiveKey="/dashboard" className="flex-column">
             <Nav.Link href="/dashboard">Dashboard</Nav.Link>
             <Nav.Link onClick={() => navigate('/register-recruitment')}>Register for recruitment</Nav.Link>

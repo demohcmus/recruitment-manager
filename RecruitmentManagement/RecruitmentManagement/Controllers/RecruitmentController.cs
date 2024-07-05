@@ -20,7 +20,7 @@ namespace RecruitmentManagement.Controllers
         }
 
         [HttpPost("register")]
-        [Authorize(Roles ="Business")]
+        //[Authorize(Roles ="Business")]
         public async Task<IActionResult> RegisterRecruitment([FromBody] RecruitmentInfoDto recruitmentInfoDto)
         {
             if (ModelState.IsValid)
@@ -45,7 +45,7 @@ namespace RecruitmentManagement.Controllers
                 return Ok(new { message = "Recruitment information registered successfully" });
             }
 
-            return BadRequest(ModelState);
+            return BadRequest(new { message = "Invalid data", errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage) });
         }
     }
 }
