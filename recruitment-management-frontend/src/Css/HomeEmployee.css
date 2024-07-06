@@ -1,0 +1,12 @@
+.sub-nav {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+.sub-nav:hover {
+    background-color: #495057;
+    border-radius: 5px;
+    cursor: pointer;
+  }

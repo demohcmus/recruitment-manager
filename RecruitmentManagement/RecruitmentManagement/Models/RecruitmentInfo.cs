@@ -15,5 +15,6 @@
         public DateTime PostingStartDate { get; set; }
         public int? PostingDurationDays { get; set; }
         public string Status { get; set; } = "pending";
+        public string? BusinessEmail { get; set; }
     }
 }
