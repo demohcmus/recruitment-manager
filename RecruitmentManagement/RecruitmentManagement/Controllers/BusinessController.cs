@@ -60,6 +60,15 @@ namespace RecruitmentManagement.Controllers
             return Ok(business);
         }
 
+        // Read all
+        [HttpGet("AllBusinesses")]
+        public async Task<IActionResult> GetAllBusinesses()
+        {
+            var businesses = await _context.Businesses.ToListAsync();
+            return Ok(businesses);
+        }
+
+
         // Update
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBusiness(int id, [FromBody] BusinessRegistrationDto businessDto)

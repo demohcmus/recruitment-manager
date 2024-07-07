@@ -36,18 +36,6 @@ const HomeEmployee = () => {
   return (
     <Container fluid>
       <Row>
-        <Col xs={2} className="sidebar">
-          <div className="logo">Ibex</div>
-          <Nav defaultActiveKey="/dashboard" className="flex-column">
-            <Nav.Link href="/dashboard" className="sub-nav">Dashboard</Nav.Link>
-            <Nav.Link className="sub-nav" onClick={() => navigate('/register-recruitment')}>Register for recruitment</Nav.Link>
-            <Nav.Link className="sub-nav" href="/business-list">Business List</Nav.Link>
-            <Nav.Link className="sub-nav" href="/applicant-list">Applicant List</Nav.Link>
-            <Nav.Link className="sub-nav" href="/recruitment-infor-list">Recruitment Infor List</Nav.Link>
-            <Nav.Link className="sub-nav"href="/applicant-profile-list">Profile Of Applicants</Nav.Link>
-          </Nav>
-        </Col>
-        <Col xs={10} className="content">
           <Row className="my-4">
             <Col>
               <h1>Employee Data Table</h1>
@@ -72,7 +60,7 @@ const HomeEmployee = () => {
           </Row>
           <Row>
             <Col>
-              <Table striped bordered hover>
+              <Table striped hover>
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -98,7 +86,6 @@ const HomeEmployee = () => {
               </Table>
             </Col>
           </Row>
-        </Col>
       </Row>
     </Container>
   );

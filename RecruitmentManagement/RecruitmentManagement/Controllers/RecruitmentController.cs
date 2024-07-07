@@ -71,6 +71,14 @@ namespace RecruitmentManagement.Controllers
             return Ok(recruitmentInfo);
         }
 
+        // Read all
+        [HttpGet("AllRecruitments")]
+        public async Task<IActionResult> GetAllRecruitmentInfos()
+        {
+            var recruitments = await _context.RecruitmentInfos.ToListAsync();
+            return Ok(recruitments);
+        }
+
         // Update
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateRecruitmentInfo(int id, [FromBody] RecruitmentInfoDto recruitmentInfoDto)
@@ -126,14 +134,6 @@ namespace RecruitmentManagement.Controllers
             _context.RecruitmentInfos.Remove(recruitmentInfo);
             await _context.SaveChangesAsync();
             return Ok(new { message = "Recruitment information deleted successfully" });
-        }
-
-        // Get All Recruitment Infos
-        [HttpGet]
-        public async Task<IActionResult> GetAllRecruitmentInfos()
-        {
-            var recruitmentInfos = await _context.RecruitmentInfos.ToListAsync();
-            return Ok(recruitmentInfos);
         }
     }
 }

@@ -62,6 +62,14 @@ namespace RecruitmentManagement.Controllers
             return Ok(employee);
         }
 
+        // Read all
+        [HttpGet("AllEmployees")]
+        public async Task<IActionResult> GetAllEmployees()
+        {
+            var employees = await _context.Employees.ToListAsync();
+            return Ok(employees);
+        }
+
         // Update
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id, [FromBody] EmployeeRegistrationDto employeeDto)

@@ -6,7 +6,13 @@
   }
 
 .sub-nav:hover {
-    background-color: #495057;
+    background-color: #DCDCDC	;
     border-radius: 5px;
     cursor: pointer;
+  }
+
+  .nav-link.active {
+    background-color: #DCDCDC;
+    border-radius: 5px;
+    color: #000000 !important;
   }

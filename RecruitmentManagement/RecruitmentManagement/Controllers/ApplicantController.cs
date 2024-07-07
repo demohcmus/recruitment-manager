@@ -64,6 +64,14 @@ namespace RecruitmentManagement.Controllers
             return Ok(applicant);
         }
 
+        // Read all
+        [HttpGet("AllApplicants")]
+        public async Task<IActionResult> GetAllApplicants()
+        {
+            var applicants = await _context.Applicants.ToListAsync();
+            return Ok(applicants);
+        }
+
         // Update
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateApplicant(int id, [FromBody] ApplicantRegistrationDto applicantDto)
