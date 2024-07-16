@@ -70,6 +70,19 @@ namespace RecruitmentManagement.Controllers
             return Ok(employees);
         }
 
+        // Read by email
+        [HttpGet("ByEmail/{email}")]
+        public async Task<IActionResult> GetEmployeeByEmail(string email)
+        {
+            var employee = await _context.Employees.SingleOrDefaultAsync(e => e.Email == email);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(employee);
+        }
+
         // Update
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id, [FromBody] EmployeeRegistrationDto employeeDto)

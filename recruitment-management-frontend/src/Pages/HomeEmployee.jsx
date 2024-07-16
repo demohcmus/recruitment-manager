@@ -1,89 +1,110 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../components/AuthContext';
-import { Container, Row, Col, Table, Button, InputGroup, FormControl, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Table, InputGroup, FormControl } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Css/HomeEmployee.css'
+import '../Css/HomeEmployee.css';
+
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239';
 
 const HomeEmployee = () => {
   const auth = useAuth();
   const userRole = auth.user?.role;
   const navigate = useNavigate();
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const employeeList = [
-    { id: 1, name: 'Employee 1', position: 'Position 1', department: 'Department 1', status: 'Active' },
-    { id: 2, name: 'Employee 2', position: 'Position 2', department: 'Department 2', status: 'Inactive' },
-  ];
-  const [filteredEmployees, setFilteredEmployees] = useState(employeeList);
+  const [employeeInfo, setEmployeeInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleSearch = (event) => {
-    const value = event.target.value.toLowerCase();
-    setSearchTerm(value);
-    setFilteredEmployees(
-      employeeList.filter(employee =>
-        employee.name.toLowerCase().includes(value) ||
-        employee.position.toLowerCase().includes(value) ||
-        employee.department.toLowerCase().includes(value)
-      )
-    );
-  };
+  useEffect(() => {
+    const fetchEmployeeInfo = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/employee/ByEmail/${auth.user.email}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming you use JWT for auth
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setEmployeeInfo(data);
+        } else {
+          setError('Failed to fetch employee information');
+        }
+      } catch (error) {
+        setError('An error occurred while fetching employee information');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (auth.user?.email) {
+      fetchEmployeeInfo();
+    }
+  }, [auth.user]);
 
   if (userRole !== 'Employee') {
     return <div>Unauthorized</div>;
   }
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <Container fluid>
       <Row>
+        <Col xs={10} className="content">
           <Row className="my-4">
             <Col>
-              <h1>Employee Data Table</h1>
-              <h2>Table</h2>
+              <h1>Information of Your Employee Account</h1>
             </Col>
           </Row>
-          <Row className="my-4">
-            <Col>
-              <InputGroup className="mb-3">
-                <FormControl
-                  placeholder="Search employees..."
-                  aria-label="Search employees..."
-                  aria-describedby="basic-addon2"
-                  value={searchTerm}
-                  onChange={handleSearch}
-                />
-
-              </InputGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Table striped hover>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Department</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredEmployees.map(employee => (
-                    <tr key={employee.id}>
-                      <td>{employee.name}</td>
-                      <td>{employee.position}</td>
-                      <td>{employee.department}</td>
-                      <td>
-                        <span className={`badge bg-${employee.status === 'Active' ? 'success' : 'danger'}`}>
-                          {employee.status}
-                        </span>
-                      </td>
+          {employeeInfo && (
+            <Row className="my-4">
+              <Col>
+                <Table striped bordered hover>
+                  <tbody>
+                    <tr>
+                      <td>Full Name</td>
+                      <td>{employeeInfo.fullName}</td>
                     </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
+                    <tr>
+                      <td>Identity Number</td>
+                      <td>{employeeInfo.identityNumber}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>{employeeInfo.email}</td>
+                    </tr>
+                    <tr>
+                      <td>Phone Number</td>
+                      <td>{employeeInfo.phoneNumber}</td>
+                    </tr>
+                    <tr>
+                      <td>Position</td>
+                      <td>{employeeInfo.position}</td>
+                    </tr>
+                    <tr>
+                      <td>Address</td>
+                      <td>{employeeInfo.address}</td>
+                    </tr>
+                    <tr>
+                      <td>Registration Date</td>
+                      <td>{new Date(employeeInfo.registrationDate).toLocaleDateString()}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
+          )}
+        </Col>
       </Row>
     </Container>
   );
