@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Css/FormStyles.css';
+import '../../Css/FormStyles.css';
 
 const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239';
 
@@ -111,7 +111,10 @@ const BusinessRegistrationForm = () => {
             required
           />
         </div>
+        <div className="d-flex justify-content-between gap-3">
         <button type="submit" className="form-btn">Register Business</button>
+        <button type="button" className="btn btn-outline-dark" onClick={() => navigate('/login')}>Cancel</button>
+        </div>
       </form>
       {message && <p>{message}</p>}
     </div>

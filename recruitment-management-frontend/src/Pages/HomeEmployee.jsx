@@ -52,9 +52,7 @@ const HomeEmployee = () => {
                   value={searchTerm}
                   onChange={handleSearch}
                 />
-                <Button variant="primary" id="button-addon2">
-                  Add New
-                </Button>
+
               </InputGroup>
             </Col>
           </Row>

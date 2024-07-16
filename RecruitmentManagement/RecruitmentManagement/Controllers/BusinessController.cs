@@ -47,11 +47,11 @@ namespace RecruitmentManagement.Controllers
             return BadRequest(ModelState);
         }
 
-        // Read
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetBusiness(int id)
+        // Read by email
+        [HttpGet("{email}")]
+        public async Task<IActionResult> GetBusiness(string email)
         {
-            var business = await _context.Businesses.FindAsync(id);
+            var business = await _context.Businesses.SingleOrDefaultAsync(b => b.Email == email);
             if (business == null)
             {
                 return NotFound();
@@ -68,12 +68,11 @@ namespace RecruitmentManagement.Controllers
             return Ok(businesses);
         }
 
-
-        // Update
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateBusiness(int id, [FromBody] BusinessRegistrationDto businessDto)
+        // Update by email
+        [HttpPut("{email}")]
+        public async Task<IActionResult> UpdateBusiness(string email, [FromBody] BusinessRegistrationDto businessDto)
         {
-            var business = await _context.Businesses.FindAsync(id);
+            var business = await _context.Businesses.SingleOrDefaultAsync(b => b.Email == email);
             if (business == null)
             {
                 return NotFound();
@@ -90,11 +89,11 @@ namespace RecruitmentManagement.Controllers
             return Ok(new { message = "Business updated successfully" });
         }
 
-        // Delete
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBusiness(int id)
+        // Delete by email
+        [HttpDelete("{email}")]
+        public async Task<IActionResult> DeleteBusiness(string email)
         {
-            var business = await _context.Businesses.FindAsync(id);
+            var business = await _context.Businesses.SingleOrDefaultAsync(b => b.Email == email);
             if (business == null)
             {
                 return NotFound();

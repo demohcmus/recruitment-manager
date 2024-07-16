@@ -3,16 +3,15 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Css/Dashboard.css';
-import EmployeeSidebar from './EmployeeSidebar';
+import BusinessSidebar from './BusinessSidebar';
 import Footer from './Component/Footer'; // Import the Footer component
 
-
-const Layout = () => {
+const BusinessLayout = () => {
   return (
     <Container fluid>
       <Row>
         <Col xs={2}>
-          <EmployeeSidebar />
+          <BusinessSidebar />
         </Col>
         <Col xs={10} className="content">
           <Outlet />
@@ -23,4 +22,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default BusinessLayout;

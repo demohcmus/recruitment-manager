@@ -13,5 +13,6 @@
         public string? PostingForm { get; set; }
         public DateTime PostingStartDate { get; set; }
         public int? PostingDurationDays { get; set; }
+        public string? Email { get; set; }  // Add this line
     }
 }

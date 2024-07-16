@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { Nav } from "react-bootstrap";
+import React, { useState } from "react";
+import { Nav, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Css/Dashboard.css";
@@ -13,9 +13,14 @@ const EmployeeSidebar = () => {
     navigate(key);
   };
 
+  const handleLogout = () => {
+    // Xử lý logic đăng xuất tại đây (xóa token, session, vv)
+    navigate("/login");
+  };
+
   return (
     <div className="sidebar">
-      <div className="logo">Ibex</div>
+      <div className="logo">ABC Company</div>
       <Nav
         defaultActiveKey="/dashboard"
         className="flex-column"
@@ -27,14 +32,6 @@ const EmployeeSidebar = () => {
           className={`sub-nav ${activeKey === "/dashboard" ? "active" : ""}`}
         >
           Dashboard
-        </Nav.Link>
-        <Nav.Link
-          eventKey="/register-recruitment"
-          className={`sub-nav ${
-            activeKey === "/register-recruitment" ? "active" : ""
-          }`}
-        >
-          Register for recruitment
         </Nav.Link>
         <Nav.Link
           eventKey="/business-list"
@@ -69,6 +66,14 @@ const EmployeeSidebar = () => {
           Profile Of Applicants
         </Nav.Link>
       </Nav>
+      <Button
+        className="btn btn-primary btn-lg px-5 active custom-logout-btn"
+        role="button"
+        aria-pressed="true"
+        onClick={handleLogout}
+      >
+        Logout
+      </Button>
     </div>
   );
 };

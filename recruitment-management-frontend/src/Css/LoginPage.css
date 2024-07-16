@@ -6,7 +6,9 @@ body, html {
 }
 
 .login-page {
-  background-image: url('https://i.pinimg.com/originals/ac/96/80/ac9680c31e6962428ea4ea48a9cb2588.jpg');
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('https://static.vecteezy.com/system/resources/previews/006/852/804/original/abstract-blue-background-simple-design-for-your-website-free-vector.jpg');
   background-size: cover;
   background-position: center;
   height: 100%;
@@ -16,6 +18,8 @@ body, html {
   height: 100vh; 
   width: 100vw;
 }
+
+
 .login-container {
   display: flex;
   background: rgba(255, 255, 255, 0.9);

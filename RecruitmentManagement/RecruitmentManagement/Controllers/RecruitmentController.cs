@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RecruitmentManagement.Data;
 using RecruitmentManagement.DTO;
 using RecruitmentManagement.Models;
-using System.Security.Claims;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RecruitmentManagement.Controllers
@@ -22,24 +21,19 @@ namespace RecruitmentManagement.Controllers
 
         // Create
         [HttpPost("register")]
-        //[Authorize(Roles = "Business")]
         public async Task<IActionResult> RegisterRecruitment([FromBody] RecruitmentInfoDto recruitmentInfoDto)
         {
             if (ModelState.IsValid)
             {
-                // Lấy email từ thông tin đăng nhập của người dùng
-                var email = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-                if (email == null)
-                {
-                    return Unauthorized("Email claim not found.");
-                }
+                var recruitmentStartDate = DateTime.UtcNow;
+                var recruitmentEndDate = recruitmentInfoDto.PostingStartDate.AddDays(recruitmentInfoDto.PostingDurationDays.Value);
 
                 var recruitmentInfo = new RecruitmentInfo
                 {
                     Position = recruitmentInfoDto.Position,
                     NumberOfPositions = recruitmentInfoDto.NumberOfPositions,
-                    RecruitmentStartDate = recruitmentInfoDto.RecruitmentStartDate,
-                    RecruitmentEndDate = recruitmentInfoDto.RecruitmentEndDate,
+                    RecruitmentStartDate = recruitmentStartDate,
+                    RecruitmentEndDate = recruitmentEndDate,
                     Requirements = recruitmentInfoDto.Requirements,
                     JobDescription = recruitmentInfoDto.JobDescription,
                     Salary = recruitmentInfoDto.Salary,
@@ -47,7 +41,7 @@ namespace RecruitmentManagement.Controllers
                     PostingForm = recruitmentInfoDto.PostingForm,
                     PostingStartDate = recruitmentInfoDto.PostingStartDate,
                     PostingDurationDays = recruitmentInfoDto.PostingDurationDays,
-                    BusinessEmail = email
+                    BusinessEmail = recruitmentInfoDto.Email // Use the Email from DTO
                 };
 
                 _context.RecruitmentInfos.Add(recruitmentInfo);
@@ -79,6 +73,22 @@ namespace RecruitmentManagement.Controllers
             return Ok(recruitments);
         }
 
+        // Read all by email
+        [HttpGet("ByEmail/{email}")]
+        public async Task<IActionResult> GetRecruitmentInfosByEmail(string email)
+        {
+            var recruitments = await _context.RecruitmentInfos
+                .Where(r => r.BusinessEmail == email)
+                .ToListAsync();
+
+            if (recruitments == null || recruitments.Count == 0)
+            {
+                return NotFound(new { message = "No recruitments found for this email." });
+            }
+
+            return Ok(recruitments);
+        }
+
         // Update
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateRecruitmentInfo(int id, [FromBody] RecruitmentInfoDto recruitmentInfoDto)
@@ -87,13 +97,6 @@ namespace RecruitmentManagement.Controllers
             if (recruitmentInfo == null)
             {
                 return NotFound();
-            }
-
-            // Chỉ cho phép cập nhật nếu email của người dùng trùng khớp với email của doanh nghiệp đã đăng ký
-            var email = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            if (email == null || recruitmentInfo.BusinessEmail != email)
-            {
-                return Unauthorized("You are not authorized to update this recruitment information.");
             }
 
             recruitmentInfo.Position = recruitmentInfoDto.Position;
@@ -107,6 +110,7 @@ namespace RecruitmentManagement.Controllers
             recruitmentInfo.PostingForm = recruitmentInfoDto.PostingForm;
             recruitmentInfo.PostingStartDate = recruitmentInfoDto.PostingStartDate;
             recruitmentInfo.PostingDurationDays = recruitmentInfoDto.PostingDurationDays;
+            recruitmentInfo.BusinessEmail = recruitmentInfoDto.Email;
 
             _context.RecruitmentInfos.Update(recruitmentInfo);
             await _context.SaveChangesAsync();
@@ -115,20 +119,12 @@ namespace RecruitmentManagement.Controllers
 
         // Delete
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "Employee")]
         public async Task<IActionResult> DeleteRecruitmentInfo(int id)
         {
             var recruitmentInfo = await _context.RecruitmentInfos.FindAsync(id);
             if (recruitmentInfo == null)
             {
                 return NotFound();
-            }
-
-            // Chỉ cho phép xóa nếu email của người dùng trùng khớp với email của doanh nghiệp đã đăng ký
-            var email = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            if (email == null || recruitmentInfo.BusinessEmail != email)
-            {
-                return Unauthorized("You are not authorized to delete this recruitment information.");
             }
 
             _context.RecruitmentInfos.Remove(recruitmentInfo);

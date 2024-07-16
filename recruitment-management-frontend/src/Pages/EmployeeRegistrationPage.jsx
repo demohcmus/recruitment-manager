@@ -1,5 +1,5 @@
 import React from 'react';
-import EmployeeRegistrationForm from '../components/EmployeeRegistrationForm';
+import EmployeeRegistrationForm from '../components/Form/EmployeeRegistrationForm';
 import '../Css/FormStyles.css';
 
 const EmployeeRegistrationPage = () => {

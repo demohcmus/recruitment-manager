@@ -1,5 +1,5 @@
 import React from 'react';
-import ApplicantRegistrationForm from '../components/ApplicantRegistrationForm';
+import ApplicantRegistrationForm from '../components/Form/ApplicantRegistrationForm';
 import '../Css/FormStyles.css';
 
 const ApplicantRegistrationPage = () => {

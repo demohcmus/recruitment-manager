@@ -1,5 +1,5 @@
 import React from 'react';
-import BusinessRegistrationForm from '../components/BusinessRegistrationForm';
+import BusinessRegistrationForm from '../components/Form/BusinessRegistrationForm';
 import '../Css/FormStyles.css';
 
 const BusinessRegistrationPage = () => {

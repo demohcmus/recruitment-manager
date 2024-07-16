@@ -59,4 +59,12 @@ body {
   .input-group .btn-primary {
     margin-left: 10px;
   }
+  .custom-logout-btn {
+    width: 190px;
+    padding: 5px; 
+    font-size: 20px; 
+    text-align: left; 
+    margin-top: 20px;
+  }
+
   

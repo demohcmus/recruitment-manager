@@ -1,5 +1,5 @@
 import React from 'react';
-import RecruitmentRegistrationForm from '../components/RecruitmentRegistrationForm';
+import RecruitmentRegistrationForm from '../components/Form/RecruitmentRegistrationForm';
 import '../Css/FormStyles.css';
 
 const RecruitmentRegistrationPage = () => {

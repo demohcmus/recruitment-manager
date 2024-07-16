@@ -1,107 +1,105 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../components/AuthContext';
-import { Container, Row, Col, Table, Button, InputGroup, FormControl, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Css/Dashboard.css';
+
+const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239';
 
 const HomeBusiness = () => {
   const auth = useAuth();
   const userRole = auth.user?.role;
   const navigate = useNavigate();
 
-  const [searchTerm, setSearchTerm] = useState('');
-  const businessesList = [
-    { id: 1, title: 'title here 1', category: 'Category name', teacher: 'Teacher James', lesson: 'Lessons name', enrolled: 16, price: '$25.00', status: 'Active' },
-    { id: 2, title: 'title here 2', category: 'Category name', teacher: 'Teacher James', lesson: 'Lessons name', enrolled: 16, price: '$25.00', status: 'Active' },
-  ];
-  const [filteredBusinesses, setFilteredBusinesses] = useState(businessesList);
+  const [businessInfo, setBusinessInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const handleSearch = (event) => {
-    const value = event.target.value.toLowerCase();
-    setSearchTerm(value);
-    setFilteredBusinesses(
-      businessesList.filter(business =>
-        business.title.toLowerCase().includes(value) ||
-        business.category.toLowerCase().includes(value) ||
-        business.teacher.toLowerCase().includes(value)
-      )
-    );
-  };
+  useEffect(() => {
+    const fetchBusinessInfo = async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/business/${auth.user.email}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming you use JWT for auth
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setBusinessInfo(data);
+        } else {
+          setError('Failed to fetch business information');
+        }
+      } catch (error) {
+        setError('An error occurred while fetching business information');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (auth.user?.email) {
+      fetchBusinessInfo();
+    }
+  }, [auth.user]);
 
   if (userRole !== 'Business') {
     return <div>Unauthorized</div>;
   }
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <Container fluid>
       <Row>
-        <Col xs={2} className="sidebar">
-          <div className="logo">Ibex</div>
-          <Nav defaultActiveKey="/dashboard" className="flex-column">
-            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-            <Nav.Link onClick={() => navigate('/register-recruitment')}>Register for recruitment</Nav.Link>
-            <Nav.Link href="/payment">Payment</Nav.Link>
-            <Nav.Link href="/applicant-list">Applicants</Nav.Link>
-          </Nav>
-        </Col>
         <Col xs={10} className="content">
           <Row className="my-4">
             <Col>
-              <h1>Data table</h1>
-              <h2>Table</h2>
+              <h1>Informations of Your Business</h1>
             </Col>
           </Row>
-          <Row className="my-4">
-            <Col>
-              <InputGroup className="mb-3">
-                <FormControl
-                  placeholder="Search content here..."
-                  aria-label="Search content here..."
-                  aria-describedby="basic-addon2"
-                  value={searchTerm}
-                  onChange={handleSearch}
-                />
-                <Button variant="primary" id="button-addon2">
-                  Add New
-                </Button>
-              </InputGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Teacher</th>
-                    <th>Lesson</th>
-                    <th>Enrolled</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredBusinesses.map(business => (
-                    <tr key={business.id}>
-                      <td>{business.title}</td>
-                      <td>{business.category}</td>
-                      <td>{business.teacher}</td>
-                      <td>{business.lesson}</td>
-                      <td>{business.enrolled}</td>
-                      <td>{business.price}</td>
-                      <td>
-                        <span className={`badge bg-${business.status === 'Active' ? 'success' : 'danger'}`}>
-                          {business.status}
-                        </span>
-                      </td>
+          {businessInfo && (
+            <Row className="my-4">
+              <Col>
+                <Table striped bordered hover>
+                  <tbody>
+                    <tr>
+                      <td>Company Name</td>
+                      <td>{businessInfo.companyName}</td>
                     </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
+                    <tr>
+                      <td>Tax Code</td>
+                      <td>{businessInfo.taxCode}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>{businessInfo.email}</td>
+                    </tr>
+                    <tr>
+                      <td>Address</td>
+                      <td>{businessInfo.address}</td>
+                    </tr>
+                    <tr>
+                      <td>Phone Number</td>
+                      <td>{businessInfo.phoneNumber}</td>
+                    </tr>
+                    <tr>
+                      <td>Registration Date</td>
+                      <td>{new Date(businessInfo.registrationDate).toLocaleDateString()}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </Col>
+            </Row>
+          )}
         </Col>
       </Row>
     </Container>

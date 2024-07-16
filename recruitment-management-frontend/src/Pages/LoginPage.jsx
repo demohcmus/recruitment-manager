@@ -25,8 +25,10 @@ const LoginPage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        auth.login(data.token);
+        auth.login(data.token, data.email);  // Pass both token and email
         const decoded = jwtDecode(data.token);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('email', data.email);
         navigate(`/home/${decoded.role.toLowerCase()}`);
       } else {
         alert('Login failed');
@@ -42,13 +44,10 @@ const LoginPage = () => {
       <div className="login-container">
         <div className="login-social">
           <h2>SMART</h2>
-          <p>Login using social media to get quick access</p>
-          <button className="social-btn facebook">Sign With Facebook</button>
-          <button className="social-btn twitter">Sign With Twitter</button>
-          <button className="social-btn google">Sign With Google</button>
-          <button className="social-btn business" onClick={() => navigate('/register/business')}>Sign as Business</button>
-          <button className="social-btn applicant" onClick={() => navigate('/register/applicant')}>Sign as Applicant</button>
-          <button className="social-btn business" onClick={() => navigate('/register/employee')}>Sign as Employee</button>
+          <p>Sign up if you don't have any account for us website</p>
+          <button className="social-btn facebook" onClick={() => navigate('/register/business')}>Sign as Business</button>
+          <button className="social-btn twitter" onClick={() => navigate('/register/applicant')}>Sign as Applicant</button>
+          <button className="social-btn google" onClick={() => navigate('/register/employee')}>Sign as Employee</button>
         </div>
         <div className="login-form">
           <h2>Login to your account</h2>
@@ -80,7 +79,6 @@ const LoginPage = () => {
                 <input type="checkbox" id="rememberMe" />
                 <label htmlFor="rememberMe">Remember me</label>
               </div>
-              <a href="#forgot-password" className="forgot-password">Forgot Password?</a>
             </div>
             <button type="submit" className="login-btn">Login</button>
           </form>

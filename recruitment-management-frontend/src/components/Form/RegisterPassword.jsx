@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import '../Css/FormStyles.css';
+import '../../Css/FormStyles.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5239';
 
@@ -11,7 +13,10 @@ const RegisterPassword = () => {
 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [errors, setErrors] = useState({});
   const [message, setMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     if (!formData || !role) {
@@ -19,8 +24,33 @@ const RegisterPassword = () => {
     }
   }, [formData, role, navigate]);
 
+  const validatePassword = (password) => {
+    const errors = {};
+    if (password.length < 12) {
+      errors.password = 'Password must be at least 12 characters long';
+    }
+    if (!/[A-Z]/.test(password)) {
+      errors.password = 'Password must contain at least one uppercase letter';
+    }
+    if (!/[a-z]/.test(password)) {
+      errors.password = 'Password must contain at least one lowercase letter';
+    }
+    if (!/[0-9]/.test(password)) {
+      errors.password = 'Password must contain at least one number';
+    }
+    if (!/[!@#$%^&*]/.test(password)) {
+      errors.password = 'Password must contain at least one symbol';
+    }
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const passwordErrors = validatePassword(password);
+    if (Object.keys(passwordErrors).length > 0) {
+      setErrors(passwordErrors);
+      return;
+    }
     if (password !== confirmPassword) {
       setMessage('Passwords do not match');
       return;
@@ -76,31 +106,46 @@ const RegisterPassword = () => {
         </div>
         <div className="form-group">
           <label htmlFor="password">Enter Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+          <div className="password-container">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              id="password"
+              placeholder="Enter Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <FontAwesomeIcon
+              icon={showPassword ? faEyeSlash : faEye}
+              onClick={() => setShowPassword(!showPassword)}
+              className="password-icon"
+            />
+          </div>
+          {errors.password && <span className="error-message">{errors.password}</span>}
         </div>
         <div className="form-group">
           <label htmlFor="confirmPassword">Re-Enter Password</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            placeholder="Re-Enter Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
+          <div className="password-container">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              id="confirmPassword"
+              placeholder="Re-Enter Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+            <FontAwesomeIcon
+              icon={showConfirmPassword ? faEyeSlash : faEye}
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              className="password-icon"
+            />
+          </div>
         </div>
         <button type="submit" className="form-btn">Set Password</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className="error-message">{message}</p>}
     </div>
   );
 };
